@@ -135,6 +135,7 @@ function setupDom() {
 	creative.dom.button = document.querySelector('#button');
 	creative.dom.buttonText = document.querySelector('#button-text');
 	creative.dom.exit = document.querySelector('#bg-exit');
+	creative.dom.box = document.querySelector('.box');
 
 	/*all*/
 	creative.dom.spinner = document.querySelector('#spinner');
@@ -181,7 +182,7 @@ function animation() {
 
 	tl
 	.to(creative.dom.t_rex, 0.1, {x:"+=15", ease:Power0.easeIn, yoyo:true, repeat:4, delay: 1})
-	.to(creative.dom.t_rex, 0.1, {x:"-=15", ease:Power0.easeIn, yoyo:true, repeat:4, delay: 1, onComplete: showBodyText})
+	.to(creative.dom.t_rex, 0.1, {x:"-=15", ease:Power0.easeIn, yoyo:true, repeat:4, delay: 1.5, onComplete: showBodyText})
 	.to(creative.dom.body_text, 0.5, {autoAlpha: 0, ease:Power3.easeIn, delay: 2})
 	.to(creative.dom.header_text_one, 0.5, {autoAlpha: 0, ease:Power3.easeIn}, '-=0.5')
 	.to(creative.dom.bg_orange, 0.5, {y: -600, ease:Power3.easeIn})
@@ -191,8 +192,16 @@ function animation() {
 	.to(creative.dom.scene_three, 0.2, {y: 0, ease:Power0.easeIn,  delay: 0.8})
 	.to(creative.dom.button, 0.5, {autoAlpha: 1, ease:Power0.easeIn,  delay: 0.1})
 
+	.to(creative.dom.box, 0.1, {x:"+=15", ease:Power0.easeIn, yoyo:true, repeat:4, delay: 2})
+	.to(creative.dom.box, 0.1, {x:"-=15", ease:Power0.easeIn, yoyo:true, repeat:4, delay: 2.5, onComplete: repeatBox})
+
 	function showBodyText() {
 		TweenMax.to(creative.dom.body_text, 0.5, {autoAlpha: 1, ease:Power3.easeIn});
+	}
+
+	function repeatBox() {
+		TweenMax.to(creative.dom.box, 0.1, {x:"+=15", ease:Power0.easeIn, yoyo:true, repeat:4, delay: 2})
+		TweenMax.to(creative.dom.box, 0.1, {x:"-=15", ease:Power0.easeIn, yoyo:true, repeat:4, delay: 2.5, onComplete: repeatBox})
 	}
 
 }
