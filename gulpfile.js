@@ -1,5 +1,6 @@
 /*requered*/
 var gulp = require('gulp'),
+	order = require("gulp-order"),
 	uglify = require('gulp-uglify'),
 	browserSync = require('browser-sync'),
 	reload = browserSync.reload,
@@ -16,7 +17,10 @@ var gulp = require('gulp'),
 gulp.task('concat', function() {
 	console.log('concat work!');
   	return gulp.src('src/js/*.js')
-  	.pipe(uglify())
+  	.pipe(order([
+	    "TweenMax.min.js",
+	    "main.js"
+	  ]))
     .pipe(concat('all.js'))
     .pipe(gulp.dest('public'))
     .pipe(reload({stream:true}));

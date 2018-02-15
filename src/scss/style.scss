@@ -12,80 +12,23 @@
 		display: none;
 		height: 100%;
 	    width: 100%;
-	    background-color: #ff6600;
 	}
 	.wrapper-logo {
 		position: absolute;
 		bottom: 0px;
 		background-color: white;
 		height: 80px;
-		padding: 15px;
+		z-index: 2;
+		width: 100%;
 		img {
-			max-width: 100%;
-		    display: block;
-		    height: auto;
-		    margin-top: 25px;
-		}
-	}
-	.wrapper-banner {
-		display: block;
-	    height: 100%;
-	    width: 100%;
-		.header-text {
-			margin: 0px;
-			color: white;
-			font-size: 21px;
-			font-family: $font;
-			font-weight: 700;
-			padding: 10px;
-			position: absolute;
-			top: 20px;
-			z-index: 2;
-		}
-		#button {
-			z-index: 2;
+		    bottom: 10px;
+		    left: 50%;
+		    margin-right: -50%;
+		    transform: translate(-50%, 0%);
 		    position: absolute;
-		    bottom: 235px;
-		    min-height: 40px;
-		    min-width: 130px;
-		    left: 14px;
-		    background-color: $blue;
-		    border: none;
-		    color: white;
-		    text-align: center;
-		    text-decoration: none;
-		    border-radius: 10px;
-		    transition: all 0.3s ease-in;
-		    cursor: pointer;
-			img {
-				height: 15px;
-				position: absolute;
-			    right: 10px;
-			    top: 13px;
-			}
-		}
-		#button:hover {
-			background-color: #1d96c9;
-		}
-		.box {
-			width: 305px;
-			position: absolute;
-			bottom: 105px;
-    		left: 5px;
-    		z-index: 0;
-    		height: auto;
+		    width: 90%;
 		}
 	}
-	#bg-exit {
-		display: block;
-	    height: 100%;
-	    width: 100%;
-	    z-index: 1;
-	    position: absolute;
-	    top: 0px;
-	    cursor: pointer;
-	}
-
 	.spinner {
 	  margin: 100px auto;
 	  width: 40px;
@@ -136,5 +79,128 @@
 	    transform: scale(1.0);
 	    -webkit-transform: scale(1.0);
 	  }
+	}
+}
+
+#scene_one {
+	display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    .bg-orange {
+    	background-color: #ff6600;
+    	display: block;
+    	height: 100%;
+    	width: 100%;
+    	position: absolute;
+    	top: 0px;
+    	z-index: 0;
+    }
+    .header-text-one {
+		margin: 0px;
+		color: white;
+		font-size: 21px;
+		font-family: $font;
+		font-weight: 700;
+		padding: 10px;
+		position: absolute;
+		top: 20px;
+		z-index: 1;
+	}
+	.body-text {
+		position: absolute;
+		color: white;
+		font-size: 25px;
+		font-family: $font;
+		font-weight: 700;
+		top: 30%;
+    	left: 10px;
+	    z-index: 1;
+	}
+	.t-rex {
+		position: absolute;
+	    bottom: 135px;
+	    width: 300px;
+	    left: -115px;
+	    z-index: 1;
+	}
+}
+
+#scene_two {
+	display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    .grrrr {
+    	position: absolute;
+	    top: 65px;
+	    left: 30px;
+    }
+}
+
+#scene_three {
+	display: block;
+    height: 100%;
+    width: 100%;
+    background-color: #ff6600;
+    position: absolute;
+    top: 0px;
+    z-index: 2;
+	.header-text-three {
+		margin: 0px;
+		color: white;
+		font-size: 21px;
+		font-family: $font;
+		font-weight: 700;
+		padding: 10px;
+		position: absolute;
+		top: 20px;
+		z-index: 6;
+	}
+	#button {
+		z-index: 6;
+	    position: absolute;
+	    bottom: 235px;
+	    min-height: 40px;
+	    min-width: 130px;
+	    background-color: $blue;
+	    border: none;
+	    color: white;
+	    text-align: center;
+	    text-decoration: none;
+	    border-radius: 10px;
+	    transition: all 0.3s ease-in;
+	    cursor: pointer;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    font-family: $font;
+		img {
+			height: 15px;
+			position: absolute;
+		    right: 10px;
+		    top: 13px;
+		}
+	}
+	#button:hover {
+		background-color: #1d96c9;
+	}
+	.box {
+		width: 305px;
+		position: absolute;
+		bottom: 105px;
+		left: 4px;
+		z-index: 0;
+		height: auto;
+	}
+	#bg-exit {
+		display: block;
+	    height: 100%;
+	    width: 100%;
+	    position: absolute;
+	    top: 0px;
+	    cursor: pointer;
+	    z-index: 5;
 	}
 }
