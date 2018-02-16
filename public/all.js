@@ -60,56 +60,47 @@ function showAd() {
 	If false, listen for the Enabler’s PAGE_LOADED event before calling showAd.*/
 
 	// Dynamic Content variables and sample values
-	var development = (window.location.href.indexOf('localhost') != -1) ? true : false;
-	
-	if(development == true) {
-		//dev
-		console.log('dev')
-		adds('devDynamicContent');
-	} else {  
-		//live
-		//dynamicContent.TestFeed_rex_Blad1[0].UniqueID;
-		console.log('live')
-		adds('dynamicContent');
-	}
+	var development = (window.location.href.indexOf('3000') != -1) ? true : false;
 
+	adds(development);
 }
 
-function adds(content) {
-	console.log('content', content)
+function adds(development) {
 
-	if(content == 'devDynamicContent') {
-		console.log('content i', content)
-		content = {};
-		content.TestFeed_rex_Blad1= [{}];
-	    content.TestFeed_rex_Blad1[0]._id = 0;
-	    content.TestFeed_rex_Blad1[0].UniqueID = 1;
-	    content.TestFeed_rex_Blad1[0].Targeting_key = "test";
-	    content.TestFeed_rex_Blad1[0].Reporting_Label = "test-report";
-	    content.TestFeed_rex_Blad1[0].Default = true;
-	    content.TestFeed_rex_Blad1[0].Active = true;
-	    content.TestFeed_rex_Blad1[0].Start_date = {};
-	    content.TestFeed_rex_Blad1[0].Start_date.RawValue = "13-02-18";
-	    content.TestFeed_rex_Blad1[0].Start_date.UtcValue = -61752730022000;
-	    content.TestFeed_rex_Blad1[0].End_Date = {};
-	    content.TestFeed_rex_Blad1[0].End_Date.RawValue = "20-02-18";
-	    content.TestFeed_rex_Blad1[0].End_Date.UtcValue = -61531891622000;
-	    content.TestFeed_rex_Blad1[0].Cta_text = "Check";
-	    content.TestFeed_rex_Blad1[0].Copy_1 = "And that\'s not the only special cargo TNT ships";
-	    content.TestFeed_rex_Blad1[0].Cta_bgColor = "#1bb3f4";
-	    content.TestFeed_rex_Blad1[0].Cta_hoverColor = "#1d96c9";
-	    content.TestFeed_rex_Blad1[0].Cta_link = {};
-	    content.TestFeed_rex_Blad1[0].Cta_link.Url = "https://www.tnt.com/campaign/en_ie/we_ship_anything.html?utm_source=dbm&utm_medium=display&utm_campaign=AOD_default_display&utm_content=tell";
-	    content.TestFeed_rex_Blad1[0].Exit_url = {};
-	    content.TestFeed_rex_Blad1[0].Exit_url.Url = "https://www.tnt.com/express/en_ie/site/home.html";
-	    content.TestFeed_rex_Blad1[0].Copy_2 = "Ever shipped a T-REX accross the world?";
-	    Enabler.setDevDynamicContent(content);
-	    console.log(content)
+	if(development == true) {
+		console.log('dev', development);
 
-	    startAds(content);
+		var devDynamicContent = {};
+
+		devDynamicContent.TestFeed_rex_Blad1= [{}];
+	    devDynamicContent.TestFeed_rex_Blad1[0]._id = 0;
+	    devDynamicContent.TestFeed_rex_Blad1[0].UniqueID = 1;
+	    devDynamicContent.TestFeed_rex_Blad1[0].Targeting_key = "test";
+	    devDynamicContent.TestFeed_rex_Blad1[0].Reporting_Label = "test-report";
+	    devDynamicContent.TestFeed_rex_Blad1[0].Default = true;
+	    devDynamicContent.TestFeed_rex_Blad1[0].Active = true;
+	    devDynamicContent.TestFeed_rex_Blad1[0].Start_date = {};
+	    devDynamicContent.TestFeed_rex_Blad1[0].Start_date.RawValue = "13-02-18";
+	    devDynamicContent.TestFeed_rex_Blad1[0].Start_date.UtcValue = -61752730022000;
+	    devDynamicContent.TestFeed_rex_Blad1[0].End_Date = {};
+	    devDynamicContent.TestFeed_rex_Blad1[0].End_Date.RawValue = "20-02-18";
+	    devDynamicContent.TestFeed_rex_Blad1[0].End_Date.UtcValue = -61531891622000;
+	    devDynamicContent.TestFeed_rex_Blad1[0].Cta_text = "Check";
+	    devDynamicContent.TestFeed_rex_Blad1[0].Copy_1 = "And that\'s not the only special cargo TNT ships";
+	    devDynamicContent.TestFeed_rex_Blad1[0].Cta_bgColor = "#1bb3f4";
+	    devDynamicContent.TestFeed_rex_Blad1[0].Cta_hoverColor = "#1d96c9";
+	    devDynamicContent.TestFeed_rex_Blad1[0].Cta_link = {};
+	    devDynamicContent.TestFeed_rex_Blad1[0].Cta_link.Url = "https://www.tnt.com/campaign/en_ie/we_ship_anything.html?utm_source=dbm&utm_medium=display&utm_campaign=AOD_default_display&utm_content=tell";
+	    devDynamicContent.TestFeed_rex_Blad1[0].Exit_url = {};
+	    devDynamicContent.TestFeed_rex_Blad1[0].Exit_url.Url = "https://www.tnt.com/express/en_ie/site/home.html";
+	    devDynamicContent.TestFeed_rex_Blad1[0].Copy_2 = "Ever shipped a T-REX accross the world?";
+	    Enabler.setDevDynamicContent(devDynamicContent);
+
+	    startAds(devDynamicContent);
 	}else {
-		console.log('live code')
-		startAds(content);
+		console.log('live');
+		dynamicContent
+		startAds(dynamicContent);
 	}
 
 }
@@ -142,29 +133,30 @@ function setupDom() {
 	creative.dom.wrapper_logo = document.querySelector('.wrapper-logo');
 }
 
-function startAds(content) {
-	console.log('addListeners', content)
+function startAds(prefix) {
+	console.log('startAds', prefix)
 
+	/*Dynamic Content*/
 	/*start*/
 	creative.dom.banner.style.display = 'block';
 	creative.dom.spinner.style.display = 'none';
 
-	creative.dom.header_text_one.innerText = content.TestFeed_rex_Blad1[0].Copy_2;
+	creative.dom.header_text_one.innerText = prefix.TestFeed_rex_Blad1[0].Copy_2;
 
-	creative.dom.header_text_three.innerText = content.TestFeed_rex_Blad1[0].Copy_1;
-	creative.dom.buttonText.innerText = content.TestFeed_rex_Blad1[0].Cta_text;
+	creative.dom.header_text_three.innerText = prefix.TestFeed_rex_Blad1[0].Copy_1;
+	creative.dom.buttonText.innerText = prefix.TestFeed_rex_Blad1[0].Cta_text;
 
 	creative.dom.button.addEventListener('click', function() {
-		window.open(content.TestFeed_rex_Blad1[0].Cta_link.Url);
+		window.open(prefix.TestFeed_rex_Blad1[0].Cta_link.Url);
 		Enabler.exit('Cta Exit');
 	});
 	creative.dom.exit.addEventListener('click', function() {
-		window.open(content.TestFeed_rex_Blad1[0].Exit_url.Url);
+		window.open(prefix.TestFeed_rex_Blad1[0].Exit_url.Url);
 		Enabler.exit('Background Exit');
 	});
 
 	creative.dom.wrapper_logo.addEventListener('click', function() {
-		window.open(content.TestFeed_rex_Blad1[0].Exit_url.Url);
+		window.open(prefix.TestFeed_rex_Blad1[0].Exit_url.Url);
 		Enabler.exit('Background Exit');
 	});
 
@@ -178,7 +170,6 @@ function animation() {
 	TweenMax.set(creative.dom.grrrr, {autoAlpha: 0});
 	TweenMax.set(creative.dom.scene_three, {y: -600});
 	TweenMax.set(creative.dom.button, {autoAlpha: 0});
-
 
 	tl
 	.to(creative.dom.t_rex, 0.1, {x:"+=15", ease:Power0.easeIn, yoyo:true, repeat:4, delay: 1})
