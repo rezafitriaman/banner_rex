@@ -54,7 +54,7 @@ function adds(development) {
 		console.log('dev', development);
 
 		var devDynamicContent = {};
-
+		/*temp code*/
 		devDynamicContent.TestFeed_rex_Blad1= [{}];
 	    devDynamicContent.TestFeed_rex_Blad1[0]._id = 0;
 	    devDynamicContent.TestFeed_rex_Blad1[0].UniqueID = 1;
@@ -88,6 +88,7 @@ function adds(development) {
 
 }
 
+/*custom dom elements*/
 function setupDom() {
 	creative.dom = {};
 	creative.dom.banner = document.querySelector('#content');
@@ -116,6 +117,7 @@ function setupDom() {
 	creative.dom.wrapper_logo = document.querySelector('.wrapper-logo');
 }
 
+/*custom dynamicContent*/
 function startAds(prefix) {
 	console.log('startAds', prefix)
 
@@ -146,6 +148,7 @@ function startAds(prefix) {
 	animation();
 }
 
+/*custom animation*/
 function animation() {
 	tl = new TimelineLite();
 	/*trex*/
